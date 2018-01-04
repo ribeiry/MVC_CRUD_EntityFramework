@@ -1,0 +1,50 @@
+﻿@model MVC_CRUD_EF_WebGrid.Models.Usuario
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+    <h4>Usuario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.usuarioNome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usuarioNome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usuarioEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usuarioEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usuarioSenha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usuarioSenha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usuarioAtivo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usuarioAtivo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "EditarUsuario", new { id = Model.usuarioID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

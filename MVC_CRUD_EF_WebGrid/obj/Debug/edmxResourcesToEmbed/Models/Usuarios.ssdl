@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CadastroModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Cadastro.dbo.Usuario' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="usuarioID" />
+      <PropertyRef Name="usuarioNome" />
+      <PropertyRef Name="usuarioEmail" />
+      <PropertyRef Name="usuarioSenha" />
+    </Key>
+    <Property Name="usuarioID" Type="int" Nullable="false" />
+    <Property Name="usuarioNome" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="usuarioEmail" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="usuarioSenha" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="usuarioAtivo" Type="bit" />
+  </EntityType>
+  <EntityContainer Name="CadastroModelStoreContainer">
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Usuario].[usuarioID] AS [usuarioID], 
+    [Usuario].[usuarioNome] AS [usuarioNome], 
+    [Usuario].[usuarioEmail] AS [usuarioEmail], 
+    [Usuario].[usuarioSenha] AS [usuarioSenha], 
+    [Usuario].[usuarioAtivo] AS [usuarioAtivo]
+    FROM [dbo].[Usuario] AS [Usuario]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

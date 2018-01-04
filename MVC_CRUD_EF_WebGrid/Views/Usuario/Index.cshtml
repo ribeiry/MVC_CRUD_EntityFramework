@@ -1,0 +1,40 @@
+﻿@model IEnumerable<MVC_CRUD_EF_WebGrid.Models.Usuario>
+
+@{
+    ViewBag.Title = "Index";
+    var grid = new WebGrid(source: Model, canPage: true, defaultSort: "User_Id", rowsPerPage: 5, canSort: true);
+}
+
+<br />
+<p>
+    @Html.ActionLink("Novo Usuario", "AdicionarUsuario", null, new { @class = "btn btn-primary" })
+</p>
+@grid.GetHtml(
+    tableStyle: "webGrid",
+    htmlAttributes: new { id = "checkableGrid" },
+    fillEmptyRows: true,
+    alternatingRowStyle: "alt",
+    headerStyle: "grid-header",
+    footerStyle: "foot-grid",
+    mode: WebGridPagerModes.All,
+    firstText: "<<Primeiro",
+    previousText: "<Anterior",
+    nextText: "Próximo>",
+    lastText: "Último>>",
+    caption: "Detalhes do Usuário",
+    emptyRowCellValue: null,
+    columns: new[]
+    {
+        grid.Column("usuarioId",header:"ID",style:"text-align-left"),
+        grid.Column("usuarioNome",header:"Nome"),
+        grid.Column("usuarioEmail",header:"Email"),
+        grid.Column("usuarioSenha",header: "Senha"),
+        grid.Column("",header: "Ações",format: @<text> @Html.ActionLink("Editar","EditarUsuario",new{id = item.usuarioId})
+            |
+            @Html.ActionLink("Deletar","DeletarUsuario", new {id = item.usuarioId})
+            |
+            @Html.ActionLink("Detalhes","Detalhes", new {id = item.usuarioId})
+            </text>
+        )
+    })
+
